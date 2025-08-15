@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class ColidirProjetil : MonoBehaviour
 {
+    public float valorDano;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+   private void OnTriggerEnter(Collider collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            CanvasGameMng.PnlStatusPlayer.ConsumirVida(valorDano);
+        }
+       Destroy(gameObject);
     }
 }
